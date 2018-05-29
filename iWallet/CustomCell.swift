@@ -26,9 +26,9 @@ class CustomCell: UITableViewCell {
     }
 
     func initLabs(data : (title:String,account:String,pwd:String)) -> Void {
-        titleLab.text = data.title
-        accountLab.text = data.account
-        pwdLab.text = data.pwd
+        titleLab?.text = data.title
+        accountLab?.text = data.account
+        pwdLab?.text = data.pwd
     }
 
 }

@@ -16,6 +16,7 @@
 		98A20D0320AACBD700AFB269 /* AddAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A20D0220AACBD700AFB269 /* AddAccountViewController.swift */; };
 		98A6789120AC0677006CD2EA /* UtilClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A6789020AC0677006CD2EA /* UtilClass.swift */; };
 		98A678B320AD676E006CD2EA /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A678B220AD676E006CD2EA /* CustomCell.swift */; };
+		98A678FA20BBD985006CD2EA /* AccountInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A678F920BBD985006CD2EA /* AccountInfoModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		98A20D0220AACBD700AFB269 /* AddAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountViewController.swift; sourceTree = "<group>"; };
 		98A6789020AC0677006CD2EA /* UtilClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilClass.swift; sourceTree = "<group>"; };
 		98A678B220AD676E006CD2EA /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		98A678F920BBD985006CD2EA /* AccountInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				98A20D0220AACBD700AFB269 /* AddAccountViewController.swift */,
 				98A6789020AC0677006CD2EA /* UtilClass.swift */,
 				98A678B220AD676E006CD2EA /* CustomCell.swift */,
+				98A678F920BBD985006CD2EA /* AccountInfoModel.swift */,
 				98A20CF420AACAF000AFB269 /* Main.storyboard */,
 				98A20CF720AACAF100AFB269 /* Assets.xcassets */,
 				98A20CF920AACAF100AFB269 /* LaunchScreen.storyboard */,
@@ -151,6 +154,7 @@
 				98A6789120AC0677006CD2EA /* UtilClass.swift in Sources */,
 				98A20CEF20AACAF000AFB269 /* AppDelegate.swift in Sources */,
 				98A20D0320AACBD700AFB269 /* AddAccountViewController.swift in Sources */,
+				98A678FA20BBD985006CD2EA /* AccountInfoModel.swift in Sources */,
 				98A678B320AD676E006CD2EA /* CustomCell.swift in Sources */,
 				98A20CF120AACAF000AFB269 /* FirstViewController.swift in Sources */,
 			);

@@ -16,6 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        print (UtilClass.fileisExist(filename: "d.txt"))
+        
+        var objs:Array = [AccountInfoModel]()
+        
+        objs.append(AccountInfoModel(account: "1", pwd: "2", title: "3"))
+        objs.append(AccountInfoModel(account: "11", pwd: "22", title: "33"))
+        objs.append(AccountInfoModel(account: "12", pwd: "23", title: "34"))
+        
+        print (UtilClass.writeToFile(object: objs, filename: "d.txt"))
+        
         return true
     }
 

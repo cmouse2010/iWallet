@@ -27,7 +27,7 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
         if cell == nil {
             cell = CustomCell(style: .default, reuseIdentifier: indentifier)
         }
-            cell .initLabs(data: datas[indexPath.row])
+            cell.initLabs(data: datas[indexPath.row])
         
         return cell
     }
