@@ -39,7 +39,7 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
                 datas = try NSKeyedUnarchiver.unarchiveObject(with: UtilClass.readFromFile(filename: Constant.FILE_WORK_NAME)) as! Array<AccountInfoModel>
             } catch {
                 switch (error){
-                default:print("Main:捕获到dog其他错误")
+                    default:print("Main:捕获到dog其他错误")
                 }
             }
             
