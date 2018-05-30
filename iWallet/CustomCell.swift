@@ -13,6 +13,18 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var titleLab: UILabel!
     @IBOutlet weak var accountLab: UILabel!
     @IBOutlet weak var pwdLab: UILabel!
+    @IBOutlet weak var delBtn: UIButton!
+    @IBOutlet weak var changeBtn: UIButton!
+    
+    
+    @IBAction func clickChangeBtn(_ sender: Any) {
+        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: Constant.NOTIFICATION_FIRSTVIEWCONTR_DATA_CHANGE), object: self.titleLab.text)
+    }
+    
+    
+    @IBAction func clickDelBtn(_ sender: Any) {
+        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: Constant.NOTIFICATION_FIRSTVIEWCONTR_DATA_DEL), object: self.titleLab.text)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +37,14 @@ class CustomCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+
+
+    func initLabs(data : (title:String,account:String,pwd:String)) -> Void {
+        titleLab?.text = data.title
+        accountLab?.text = data.account
+        pwdLab?.text = data.pwd
+    }
+    
     //划动手势
     @objc func handleSwipeGesture(sender: UISwipeGestureRecognizer){
         //划动的方向
@@ -33,9 +53,13 @@ class CustomCell: UITableViewCell {
         switch (direction){
         case UISwipeGestureRecognizerDirection.left:
             print("Left")
+            self.delBtn.isHidden = false
+            self.changeBtn.isHidden = false
             break
         case UISwipeGestureRecognizerDirection.right:
             print("Right")
+            self.delBtn.isHidden = true
+            self.changeBtn.isHidden = true
             break
         case UISwipeGestureRecognizerDirection.up:
             print("Up")
@@ -47,29 +71,24 @@ class CustomCell: UITableViewCell {
             break;
         }
     }
-
-    func initLabs(data : (title:String,account:String,pwd:String)) -> Void {
-        titleLab?.text = data.title
-        accountLab?.text = data.account
-        pwdLab?.text = data.pwd
-        
-        self.contentView.isUserInteractionEnabled = false
-        
-        //添加手势
-        //划动手势 左划
-        
-        let action:Selector = #selector(CustomCell.handleSwipeGesture(sender:))
-        let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: action)
-        swipeLeftGesture.direction = UISwipeGestureRecognizerDirection.left
-        self.contentView.addGestureRecognizer(swipeLeftGesture)
-    }
-    
-
     
     func initLabs(accountModel:AccountInfoModel) -> Void {
         self.titleLab.text = accountModel.title
         self.accountLab.text = accountModel.account
         self.pwdLab.text = accountModel.pwd
+        
+        //添加手势
+        //划动手势 左划
+        
+        let action:Selector = #selector(CustomCell.handleSwipeGesture(sender:))
+        let swipeLeftGestureL = UISwipeGestureRecognizer(target: self, action: action)
+        swipeLeftGestureL.direction = UISwipeGestureRecognizerDirection.left
+        self.contentView.addGestureRecognizer(swipeLeftGestureL)
+        
+        let swipeLeftGestureR = UISwipeGestureRecognizer(target: self, action: action)
+        swipeLeftGestureR.direction = UISwipeGestureRecognizerDirection.right
+        self.contentView.addGestureRecognizer(swipeLeftGestureR)
+        
     }
 
 }

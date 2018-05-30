@@ -30,39 +30,74 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="pph-R6-8We">
-                                                    <rect key="frame" x="10" y="10" width="365" height="49.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="iZs-Qn-N7Y">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="苹果开发者帐号邮箱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6L-n6-G6U">
-                                                            <rect key="frame" x="0.0" y="0.0" width="365" height="14.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" text="wireless@snailgame.net" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RjN-Bv-lfV">
-                                                            <rect key="frame" x="0.0" y="22.5" width="365" height="0.0"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="*******" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcE-7g-5qh">
-                                                            <rect key="frame" x="0.0" y="30.5" width="365" height="19"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="pph-R6-8We">
+                                                            <rect key="frame" x="0.0" y="0.0" width="184" height="45"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="苹果开发者帐号邮箱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6L-n6-G6U">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="184" height="14.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" text="wireless@snailgame.net" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RjN-Bv-lfV">
+                                                                    <rect key="frame" x="0.0" y="22.5" width="184" height="0.0"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="*******" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcE-7g-5qh">
+                                                                    <rect key="frame" x="0.0" y="30.5" width="184" height="14.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mQc-mZ-1Ot">
+                                                            <rect key="frame" x="267" y="0.0" width="108" height="45"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sa0-Wa-Bqd">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="45"/>
+                                                                    <color key="backgroundColor" red="1" green="0.58699573243801217" blue="0.68487041529890336" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="45" id="1dv-Jq-NOe"/>
+                                                                        <constraint firstAttribute="width" constant="50" id="yio-pq-5o4"/>
+                                                                    </constraints>
+                                                                    <state key="normal" title="修改"/>
+                                                                    <connections>
+                                                                        <action selector="clickChangeBtn:" destination="tLd-Cb-fsI" eventType="touchUpInside" id="2RD-OE-FJC"/>
+                                                                    </connections>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VdQ-vQ-WSW">
+                                                                    <rect key="frame" x="58" y="0.0" width="50" height="45"/>
+                                                                    <color key="backgroundColor" red="1" green="0.58699573240000003" blue="0.68487041530000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="50" id="BhQ-sN-e8x"/>
+                                                                        <constraint firstAttribute="height" constant="45" id="m7c-08-F0a"/>
+                                                                    </constraints>
+                                                                    <state key="normal" title="删除"/>
+                                                                    <connections>
+                                                                        <action selector="clickDelBtn:" destination="tLd-Cb-fsI" eventType="touchUpInside" id="qhh-Su-SaP"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="pph-R6-8We" secondAttribute="trailing" id="8Ag-1S-qck"/>
-                                                <constraint firstAttribute="bottom" secondItem="pph-R6-8We" secondAttribute="bottom" constant="10" id="8J4-b8-ak0"/>
-                                                <constraint firstItem="pph-R6-8We" firstAttribute="top" secondItem="qQx-oN-3HQ" secondAttribute="top" constant="10" id="kej-cb-ynH"/>
-                                                <constraint firstItem="pph-R6-8We" firstAttribute="leading" secondItem="qQx-oN-3HQ" secondAttribute="leading" constant="10" id="zjL-gy-bmy"/>
+                                                <constraint firstAttribute="trailing" secondItem="iZs-Qn-N7Y" secondAttribute="trailing" id="8pa-pc-1cK"/>
+                                                <constraint firstItem="iZs-Qn-N7Y" firstAttribute="top" secondItem="qQx-oN-3HQ" secondAttribute="top" id="Fly-Uu-A4A"/>
+                                                <constraint firstItem="iZs-Qn-N7Y" firstAttribute="leading" secondItem="qQx-oN-3HQ" secondAttribute="leading" id="w9f-33-Jn3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="accountLab" destination="RjN-Bv-lfV" id="RU2-re-SBy"/>
+                                            <outlet property="changeBtn" destination="sa0-Wa-Bqd" id="ZOW-be-hbC"/>
+                                            <outlet property="delBtn" destination="VdQ-vQ-WSW" id="Kja-8R-4IB"/>
                                             <outlet property="pwdLab" destination="TcE-7g-5qh" id="w08-Yc-l5X"/>
                                             <outlet property="titleLab" destination="l6L-n6-G6U" id="Baa-vP-3bV"/>
                                         </connections>
@@ -86,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="980" y="-358"/>
+            <point key="canvasLocation" x="799" y="-473"/>
         </scene>
         <!--Info-->
         <scene sceneID="FtY-UT-n2v">
@@ -139,7 +174,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="798" y="355"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

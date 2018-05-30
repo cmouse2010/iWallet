@@ -6,3 +6,4 @@ Creating Apps for a Global Audience 创建全球用户Apps
 Using Accelerate and simd
 
 
+周一  2小时

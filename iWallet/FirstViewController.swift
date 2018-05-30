@@ -33,8 +33,8 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        //初使化数据
         if UtilClass.fileisExist(filename: Constant.FILE_WORK_NAME) {
-            
             do {
                 datas = try NSKeyedUnarchiver.unarchiveObject(with: UtilClass.readFromFile(filename: Constant.FILE_WORK_NAME)) as! Array<AccountInfoModel>
             } catch {
@@ -42,10 +42,14 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
                     default:print("Main:捕获到dog其他错误")
                 }
             }
-            
         }
         
         tableView.dataSource = self
+        
+        //注册通知
+        NotificationCenter.default.addObserver(self, selector: #selector(datasNotification(noti:)), name: NSNotification.Name(rawValue: Constant.NOTIFICATION_FIRSTVIEWCONTR_DATA_DEL), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(datasNotification(noti:)), name: NSNotification.Name(rawValue: Constant.NOTIFICATION_FIRSTVIEWCONTR_DATA_CHANGE), object: nil)
+
 //        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "workTableCell")
         
         
@@ -54,6 +58,20 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func datasNotification(noti: Notification){
+        switch noti.name {
+        case NSNotification.Name(Constant.NOTIFICATION_FIRSTVIEWCONTR_DATA_DEL) : break
+            
+        default: break
+            
+        }
+    }
+    
+    deinit {
+        /// 移除通知
+        NotificationCenter.default.removeObserver(self)
     }
 
 }

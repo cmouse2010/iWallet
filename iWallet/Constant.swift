@@ -9,6 +9,10 @@
 import UIKit
 
 class Constant: NSObject {
+    //本地文件名常量
     static let FILE_WORK_NAME :String = "work.cc"
     
+    //通知名常量
+    static let NOTIFICATION_FIRSTVIEWCONTR_DATA_DEL = "NOTIFICATION_FIRSTVIEWCONTR_DATA_DEL"
+    static let NOTIFICATION_FIRSTVIEWCONTR_DATA_CHANGE = "NOTIFICATION_FIRSTVIEWCONTR_DATA_CHANGE"
 }

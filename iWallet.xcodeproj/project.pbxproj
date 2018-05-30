@@ -329,7 +329,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = WSSN499SLU;
 				INFOPLIST_FILE = iWallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -337,7 +337,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.snailgames.iWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "eb17d6e3-91f2-4e71-9e0c-ee05f9f7f131";
+				PROVISIONING_PROFILE_SPECIFIER = UniversalSnailDev;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
