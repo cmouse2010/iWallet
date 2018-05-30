@@ -30,5 +30,11 @@ class CustomCell: UITableViewCell {
         accountLab?.text = data.account
         pwdLab?.text = data.pwd
     }
+    
+    func initLabs(accountModel:AccountInfoModel) -> Void {
+        self.titleLab.text = accountModel.title
+        self.accountLab.text = accountModel.account
+        self.pwdLab.text = accountModel.pwd
+    }
 
 }

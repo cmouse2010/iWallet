@@ -11,8 +11,8 @@ import UIKit
 class FirstViewController: UIViewController , UITableViewDataSource  {
     @IBOutlet weak var tableView: UITableView!
     
-    var datas : [(String,String,String)] = []
-    
+//    var datas : [(String,String,String)] = []
+    var datas:Array = Array<AccountInfoModel>()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return datas.count
@@ -21,13 +21,10 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let indentifier = "workTableCell"
+
+        let cell:CustomCell! = tableView.dequeueReusableCell(withIdentifier: indentifier, for: indexPath) as?CustomCell
         
-        var cell:CustomCell! = tableView.dequeueReusableCell(withIdentifier: indentifier)as?CustomCell
-        
-        if cell == nil {
-            cell = CustomCell(style: .default, reuseIdentifier: indentifier)
-        }
-            cell.initLabs(data: datas[indexPath.row])
+        cell.initLabs(accountModel: datas[indexPath.row])
         
         return cell
     }
@@ -36,13 +33,20 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        datas.append(("开发者帐号0","text","ssss_"))
-        datas.append(("开发者帐号1","text2","ssss3"))
-        datas.append(("开发者帐号4","text5","ssss6"))
-        datas.append(("开发者帐号7","text8","ssss9"))
+        if UtilClass.fileisExist(filename: Constant.FILE_WORK_NAME) {
+            
+            do {
+                datas = try NSKeyedUnarchiver.unarchiveObject(with: UtilClass.readFromFile(filename: Constant.FILE_WORK_NAME)) as! Array<AccountInfoModel>
+            } catch {
+                switch (error){
+                default:print("Main:捕获到dog其他错误")
+                }
+            }
+            
+        }
         
         tableView.dataSource = self
-        tableView.register(CustomCell.self, forCellReuseIdentifier: "workTableCell")
+//        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "workTableCell")
         
         
     }
