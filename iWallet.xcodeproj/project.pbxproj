@@ -19,6 +19,8 @@
 		98A678FC20BD3276006CD2EA /* UtilClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A678FB20BD3276006CD2EA /* UtilClass.swift */; };
 		98A678FE20BD49C5006CD2EA /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A678FD20BD49C5006CD2EA /* Constant.swift */; };
 		98A6790020BE3BCC006CD2EA /* wwdc2018.txt in Resources */ = {isa = PBXBuildFile; fileRef = 98A678FF20BE3BCC006CD2EA /* wwdc2018.txt */; };
+		98A6790220BFDE95006CD2EA /* AddAccountSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A6790120BFDE95006CD2EA /* AddAccountSubView.swift */; };
+		98A6790420BFEFE3006CD2EA /* FirstViewController+AddAccSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A6790320BFEFE3006CD2EA /* FirstViewController+AddAccSubView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		98A678FB20BD3276006CD2EA /* UtilClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilClass.swift; sourceTree = "<group>"; };
 		98A678FD20BD49C5006CD2EA /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		98A678FF20BE3BCC006CD2EA /* wwdc2018.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = wwdc2018.txt; sourceTree = "<group>"; };
+		98A6790120BFDE95006CD2EA /* AddAccountSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountSubView.swift; sourceTree = "<group>"; };
+		98A6790320BFEFE3006CD2EA /* FirstViewController+AddAccSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirstViewController+AddAccSubView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 			children = (
 				98A20CEE20AACAF000AFB269 /* AppDelegate.swift */,
 				98A20CF020AACAF000AFB269 /* FirstViewController.swift */,
+				98A6790320BFEFE3006CD2EA /* FirstViewController+AddAccSubView.swift */,
+				98A6790120BFDE95006CD2EA /* AddAccountSubView.swift */,
 				98A20CF220AACAF000AFB269 /* SecondViewController.swift */,
 				98A20D0220AACBD700AFB269 /* AddAccountViewController.swift */,
 				98A678B220AD676E006CD2EA /* CustomCell.swift */,
@@ -158,11 +164,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				98A20CF320AACAF000AFB269 /* SecondViewController.swift in Sources */,
+				98A6790420BFEFE3006CD2EA /* FirstViewController+AddAccSubView.swift in Sources */,
 				98A678FC20BD3276006CD2EA /* UtilClass.swift in Sources */,
 				98A20CEF20AACAF000AFB269 /* AppDelegate.swift in Sources */,
 				98A678FE20BD49C5006CD2EA /* Constant.swift in Sources */,
 				98A20D0320AACBD700AFB269 /* AddAccountViewController.swift in Sources */,
 				98A678FA20BBD985006CD2EA /* AccountInfoModel.swift in Sources */,
+				98A6790220BFDE95006CD2EA /* AddAccountSubView.swift in Sources */,
 				98A678B320AD676E006CD2EA /* CustomCell.swift in Sources */,
 				98A20CF120AACAF000AFB269 /* FirstViewController.swift in Sources */,
 			);

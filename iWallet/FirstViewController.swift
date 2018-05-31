@@ -10,10 +10,14 @@ import UIKit
 
 class FirstViewController: UIViewController , UITableViewDataSource  {
     @IBOutlet weak var tableView: UITableView!
-    
-//    var datas : [(String,String,String)] = []
+    @IBOutlet weak var addaccSubview: UIView!
+    @IBOutlet weak var titleInputField: UITextField!
+    @IBOutlet weak var pwdInputField: UITextField!
+    @IBOutlet weak var accountInputField: UITextField!
+    //    var datas : [(String,String,String)] = []
     var datas:Array = Array<AccountInfoModel>()
     
+    //数据源
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return datas.count
     }
@@ -52,7 +56,8 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
 
 //        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "workTableCell")
         
-        
+        //子弹面弹出时点击不能穿透
+//        self.addaccSubview.isUserInteractionEnabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,8 +76,15 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
             }
             break
             
-        case NSNotification.Name(Constant.NOTIFICATION_FIRSTVIEWCONTR_DATA_DEL) :
-            
+        case NSNotification.Name(Constant.NOTIFICATION_FIRSTVIEWCONTR_DATA_CHANGE) :
+            let data_title = noti.object as! String
+            let index = findByTitle(title: data_title)
+            if index != -1 {
+                addaccSubview.isHidden = false
+                titleInputField.text = datas[index].title
+                accountInputField.text = datas[index].account
+                pwdInputField.text = datas[index].pwd
+            }
             break
             
         default: break
@@ -87,6 +99,7 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
         NotificationCenter.default.removeObserver(self)
     }
     
+    //数据处理工具方法
     func findByTitle(title:String) -> Int {
         var rtn = 0
         var isHave = false
@@ -109,6 +122,52 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
         datas.remove(at: index)
         self.tableView.reloadData()
     }
-
+    
+    func saveData(accountinfo:AccountInfoModel) -> Void {
+        guard let title = accountinfo.title else {return}
+        delByIndex(index: findByTitle(title: title))
+        datas.append(accountinfo)
+    }
+    
+    //添加帐号子界面处理
+    
+    @IBAction func clickCloseBtn(_ sender: Any) {
+        self.addaccSubview.isHidden = true
+        clearData()
+    }
+    
+    @IBAction func clickSaveBtn(_ sender: Any) {
+        func getaccoutInfo() -> AccountInfoModel? {
+            guard let mytitle = titleInputField.text,
+                let account = accountInputField.text,
+                let pwd = pwdInputField.text
+                else {
+                    return nil
+            }
+            
+            return AccountInfoModel(account: account, pwd: pwd, title: mytitle)
+        }
+        
+        let accountInfo = getaccoutInfo()
+        
+        saveData(accountinfo: accountInfo!)
+        
+        tableView.reloadData()
+        
+        addaccSubview.isHidden = true
+    }
+    
+    @IBAction func clickCanelBtn(_ sender: Any) {
+        self.addaccSubview.isHidden = true
+        clearData()
+    }
+    
+    func clearData() {
+        self.titleInputField.text = ""
+        self.accountInputField.text = ""
+        self.pwdInputField.text = ""
+    }
+    
+    
 }
 
