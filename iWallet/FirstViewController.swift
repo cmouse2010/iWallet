@@ -61,17 +61,53 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
     }
     
     @objc func datasNotification(noti: Notification){
+        
         switch noti.name {
-        case NSNotification.Name(Constant.NOTIFICATION_FIRSTVIEWCONTR_DATA_DEL) : break
+        case NSNotification.Name(Constant.NOTIFICATION_FIRSTVIEWCONTR_DATA_DEL) :
+            let data_title = noti.object as! String
+            let index = findByTitle(title: data_title)
+            if index != -1 {
+                delByIndex(index: index)
+            }
+            break
+            
+        case NSNotification.Name(Constant.NOTIFICATION_FIRSTVIEWCONTR_DATA_DEL) :
+            
+            break
             
         default: break
             
         }
+        
+        print(datas)
     }
     
     deinit {
         /// 移除通知
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    func findByTitle(title:String) -> Int {
+        var rtn = 0
+        var isHave = false
+        for account:AccountInfoModel in datas {
+            if account.title == title {
+                isHave = true
+                break
+            }
+            rtn += 1
+        }
+        if isHave {
+            return rtn
+        } else {
+            return -1
+        }
+        
+    }
+    
+    func delByIndex(index:Int) -> Void {
+        datas.remove(at: index)
+        self.tableView.reloadData()
     }
 
 }
