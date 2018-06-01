@@ -15,15 +15,16 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var pwdLab: UILabel!
     @IBOutlet weak var delBtn: UIButton!
     @IBOutlet weak var changeBtn: UIButton!
-    
+
+    var dataIndex = 0
     
     @IBAction func clickChangeBtn(_ sender: Any) {
-        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: Constant.NOTIFICATION_FIRSTVIEWCONTR_DATA_CHANGE), object: self.titleLab.text)
+        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: Constant.NOTIFICATION_FIRSTVIEWCONTR_DATA_CHANGE), object: self.dataIndex)
     }
     
     
     @IBAction func clickDelBtn(_ sender: Any) {
-        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: Constant.NOTIFICATION_FIRSTVIEWCONTR_DATA_DEL), object: self.titleLab.text)
+        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: Constant.NOTIFICATION_FIRSTVIEWCONTR_DATA_DEL), object: self.dataIndex)
     }
     
     override func awakeFromNib() {
@@ -52,30 +53,33 @@ class CustomCell: UITableViewCell {
         //判断是上下左右
         switch (direction){
         case UISwipeGestureRecognizerDirection.left:
-            print("Left")
-            self.delBtn.isHidden = false
-            self.changeBtn.isHidden = false
+            NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: Constant.NOTIFICATION_FIRSTVIEWCONTR_LEFT_SWIPE), object: self.dataIndex)
             break
         case UISwipeGestureRecognizerDirection.right:
-            print("Right")
-            self.delBtn.isHidden = true
-            self.changeBtn.isHidden = true
+            NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: Constant.NOTIFICATION_FIRSTVIEWCONTR_RIGHT_SWIPE), object: self.dataIndex)
             break
         case UISwipeGestureRecognizerDirection.up:
-            print("Up")
+
             break
         case UISwipeGestureRecognizerDirection.down:
-            print("Down")
+
             break
         default:
             break;
         }
     }
     
-    func initLabs(accountModel:AccountInfoModel) -> Void {
+    func initLabs(accountModel:AccountInfoModel,dataindex:Int) -> Void {
         self.titleLab.text = accountModel.title
         self.accountLab.text = accountModel.account
         self.pwdLab.text = accountModel.pwd
+        self.dataIndex = dataindex
+        
+        guard let show = accountModel.isshow else {
+           return
+        }
+        
+        showBtn(isshow: show)
         
         //添加手势
         //划动手势 左划
@@ -89,6 +93,16 @@ class CustomCell: UITableViewCell {
         swipeLeftGestureR.direction = UISwipeGestureRecognizerDirection.right
         self.contentView.addGestureRecognizer(swipeLeftGestureR)
         
+    }
+    
+    func showBtn(isshow:Bool) {
+        if isshow {
+            self.delBtn.isHidden = false
+            self.changeBtn.isHidden = false
+        } else {
+            self.delBtn.isHidden = true
+            self.changeBtn.isHidden = true
+        }
     }
 
 }

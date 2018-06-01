@@ -45,14 +45,19 @@ class UtilClass: NSObject {
     }
     
     //写入文件
-    static func writeToFile(object:Array<AccountInfoModel> , filename:String) -> Bool{
+    static func writeToFile(object:Array<AccountInfoModel> , filename:String) -> Void{
         if fileisExist(filename: filename) {
             deleteFile(filename: filename)
         }
         
         let content = NSKeyedArchiver.archivedData(withRootObject: object)
 
-        return manager.createFile(atPath: (createFilePah(filename: filename)?.path)!, contents: content, attributes: nil)
+        let result = manager.createFile(atPath: (createFilePah(filename: filename)?.path)!, contents: content, attributes: nil)
+        if result {
+            print("save file success")
+        } else {
+            print("save file faile")
+        }
     }
     
     

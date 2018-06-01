@@ -14,6 +14,10 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
     @IBOutlet weak var titleInputField: UITextField!
     @IBOutlet weak var pwdInputField: UITextField!
     @IBOutlet weak var accountInputField: UITextField!
+    
+    var dataIndex = 0
+    
+    
     //    var datas : [(String,String,String)] = []
     var datas:Array = Array<AccountInfoModel>()
     
@@ -28,7 +32,7 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
 
         let cell:CustomCell! = tableView.dequeueReusableCell(withIdentifier: indentifier, for: indexPath) as?CustomCell
         
-        cell.initLabs(accountModel: datas[indexPath.row])
+        cell.initLabs(accountModel: datas[indexPath.row],dataindex: indexPath.row)
         
         return cell
     }
@@ -53,11 +57,16 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
         //注册通知
         NotificationCenter.default.addObserver(self, selector: #selector(datasNotification(noti:)), name: NSNotification.Name(rawValue: Constant.NOTIFICATION_FIRSTVIEWCONTR_DATA_DEL), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(datasNotification(noti:)), name: NSNotification.Name(rawValue: Constant.NOTIFICATION_FIRSTVIEWCONTR_DATA_CHANGE), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(datasNotification(noti:)), name: NSNotification.Name(rawValue: Constant.NOTIFICATION_FIRSTVIEWCONTR_LEFT_SWIPE), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(datasNotification(noti:)), name: NSNotification.Name(rawValue: Constant.NOTIFICATION_FIRSTVIEWCONTR_RIGHT_SWIPE), object: nil)
 
 //        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "workTableCell")
         
         //子弹面弹出时点击不能穿透
 //        self.addaccSubview.isUserInteractionEnabled = false
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 130
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,29 +78,35 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
         
         switch noti.name {
         case NSNotification.Name(Constant.NOTIFICATION_FIRSTVIEWCONTR_DATA_DEL) :
-            let data_title = noti.object as! String
-            let index = findByTitle(title: data_title)
-            if index != -1 {
-                delByIndex(index: index)
-            }
+            let data_index = noti.object as! Int
+            delByIndex(index: data_index)
             break
             
         case NSNotification.Name(Constant.NOTIFICATION_FIRSTVIEWCONTR_DATA_CHANGE) :
-            let data_title = noti.object as! String
-            let index = findByTitle(title: data_title)
-            if index != -1 {
-                addaccSubview.isHidden = false
-                titleInputField.text = datas[index].title
-                accountInputField.text = datas[index].account
-                pwdInputField.text = datas[index].pwd
-            }
+            let data_index = noti.object as! Int
+            dataIndex = data_index
+            addaccSubview.isHidden = false
+            titleInputField.text = datas[dataIndex].title
+            accountInputField.text = datas[dataIndex].account
+            pwdInputField.text = datas[dataIndex].pwd
+            titleInputField.becomeFirstResponder()
+            break
+            
+        case NSNotification.Name(Constant.NOTIFICATION_FIRSTVIEWCONTR_LEFT_SWIPE) :
+            let data_index = noti.object as! Int
+            refreshDataBtnShow(index: data_index, isshow: true)
+            break
+            
+        case NSNotification.Name(Constant.NOTIFICATION_FIRSTVIEWCONTR_RIGHT_SWIPE) :
+            let data_index = noti.object as! Int
+            datas[data_index].isshow = false
+            tableView.reloadData()
             break
             
         default: break
             
         }
-        
-        print(datas)
+
     }
     
     deinit {
@@ -121,12 +136,50 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
     func delByIndex(index:Int) -> Void {
         datas.remove(at: index)
         self.tableView.reloadData()
+        
+        UtilClass.writeToFile(object: datas, filename: Constant.FILE_WORK_NAME)
     }
     
-    func saveData(accountinfo:AccountInfoModel) -> Void {
+    func addnewData(accountinfo:AccountInfoModel) -> Void {
         guard let title = accountinfo.title else {return}
-        delByIndex(index: findByTitle(title: title))
-        datas.append(accountinfo)
+        
+        let index = findByTitle(title: title)
+        if index != -1 {
+            datas.append(accountinfo)
+        } else {
+            print("添加失败,数据已存在")
+        }
+        
+        UtilClass.writeToFile(object: datas, filename: Constant.FILE_WORK_NAME)
+    }
+    
+    func modfiyData(accountinfo:AccountInfoModel) -> Void {
+        let queryindex = findByTitle(title: accountinfo.title!)
+        if queryindex == -1 {
+            datas[dataIndex] = accountinfo
+        } else {
+            if dataIndex == queryindex {
+                datas[dataIndex] = accountinfo
+            } else {
+                print("修改失败,与已有数据重复")
+            }
+        }
+        
+        UtilClass.writeToFile(object: datas, filename: Constant.FILE_WORK_NAME)
+    }
+    
+    func refreshDataBtnShow(index:Int,isshow:Bool) -> Void {
+        var i = 0
+        for _:AccountInfoModel in datas {
+            if index == i {
+                datas[i].isshow = isshow
+            } else {
+                datas[i].isshow = !isshow
+            }
+            
+            i += 1
+        }
+        tableView.reloadData()
     }
     
     //添加帐号子界面处理
@@ -134,6 +187,7 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
     @IBAction func clickCloseBtn(_ sender: Any) {
         self.addaccSubview.isHidden = true
         clearData()
+        closeKeyboard()
     }
     
     @IBAction func clickSaveBtn(_ sender: Any) {
@@ -150,11 +204,13 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
         
         let accountInfo = getaccoutInfo()
         
-        saveData(accountinfo: accountInfo!)
+        modfiyData(accountinfo: accountInfo!)
         
         tableView.reloadData()
         
         addaccSubview.isHidden = true
+        
+        closeKeyboard()
     }
     
     @IBAction func clickCanelBtn(_ sender: Any) {
@@ -168,6 +224,12 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
         self.pwdInputField.text = ""
     }
     
+    //close keyboard
+    func closeKeyboard(){
+        titleInputField.resignFirstResponder()
+        accountInputField.resignFirstResponder()
+        pwdInputField.resignFirstResponder()
+    }
     
 }
 
