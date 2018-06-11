@@ -32,7 +32,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="苹果开发者帐号邮箱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6L-n6-G6U">
-                                                    <rect key="frame" x="10" y="21" width="156" height="21"/>
+                                                    <rect key="frame" x="30" y="21" width="156" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="U96-Qa-ZRj"/>
                                                     </constraints>
@@ -41,7 +41,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" text="wireless@snailgame.net" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RjN-Bv-lfV">
-                                                    <rect key="frame" x="10" y="52" width="136" height="21"/>
+                                                    <rect key="frame" x="30" y="52" width="136" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="Jq1-KW-2qN"/>
                                                     </constraints>
@@ -49,8 +49,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="*******" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcE-7g-5qh">
-                                                    <rect key="frame" x="10" y="83" width="39" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="*************" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcE-7g-5qh">
+                                                    <rect key="frame" x="30" y="83" width="72" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="wRX-qX-nqg"/>
                                                     </constraints>
@@ -91,7 +91,7 @@
                                                 <constraint firstItem="TcE-7g-5qh" firstAttribute="top" secondItem="RjN-Bv-lfV" secondAttribute="bottom" constant="10" id="JDM-NE-p8i"/>
                                                 <constraint firstItem="sa0-Wa-Bqd" firstAttribute="trailing" secondItem="VdQ-vQ-WSW" secondAttribute="leading" constant="-10" id="OQS-0p-vT7"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RjN-Bv-lfV" secondAttribute="trailing" constant="20" symbolic="YES" id="Qw9-M9-dra"/>
-                                                <constraint firstItem="l6L-n6-G6U" firstAttribute="leading" secondItem="qQx-oN-3HQ" secondAttribute="leading" constant="10" id="XBD-ut-UP5"/>
+                                                <constraint firstItem="l6L-n6-G6U" firstAttribute="leading" secondItem="qQx-oN-3HQ" secondAttribute="leading" constant="30" id="XBD-ut-UP5"/>
                                                 <constraint firstItem="TcE-7g-5qh" firstAttribute="leading" secondItem="l6L-n6-G6U" secondAttribute="leading" id="Xg1-Yq-mOT"/>
                                                 <constraint firstItem="sa0-Wa-Bqd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qQx-oN-3HQ" secondAttribute="leading" constant="20" symbolic="YES" id="acP-14-6dl"/>
                                                 <constraint firstItem="VdQ-vQ-WSW" firstAttribute="trailing" secondItem="qQx-oN-3HQ" secondAttribute="trailing" constant="-10" id="dYd-Kn-60r"/>

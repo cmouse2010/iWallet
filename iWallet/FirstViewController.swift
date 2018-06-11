@@ -59,7 +59,8 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
         NotificationCenter.default.addObserver(self, selector: #selector(datasNotification(noti:)), name: NSNotification.Name(rawValue: Constant.NOTIFICATION_FIRSTVIEWCONTR_DATA_CHANGE), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(datasNotification(noti:)), name: NSNotification.Name(rawValue: Constant.NOTIFICATION_FIRSTVIEWCONTR_LEFT_SWIPE), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(datasNotification(noti:)), name: NSNotification.Name(rawValue: Constant.NOTIFICATION_FIRSTVIEWCONTR_RIGHT_SWIPE), object: nil)
-
+        NotificationCenter.default.addObserver(self, selector: #selector(datasNotification(noti:)), name: NSNotification.Name(rawValue: Constant.NOTIFICATION_FIRSTVIEWCONTR_LONG_PRESS), object: nil)
+        
 //        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "workTableCell")
         
         //子弹面弹出时点击不能穿透
@@ -101,6 +102,11 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
             let data_index = noti.object as! Int
             datas[data_index].isshow = false
             tableView.reloadData()
+            break
+            
+        case NSNotification.Name(Constant.NOTIFICATION_FIRSTVIEWCONTR_LONG_PRESS) :
+            let data_index = noti.object as! Int
+            UIPasteboard.general.string = datas[data_index].pwd
             break
             
         default: break
@@ -199,22 +205,27 @@ class FirstViewController: UIViewController , UITableViewDataSource  {
                     return nil
             }
             
+            if mytitle.isEmpty || account.isEmpty || pwd.isEmpty {
+                return nil
+            }
+            
             return AccountInfoModel(account: account, pwd: pwd, title: mytitle)
         }
         
-        let accountInfo = getaccoutInfo()
+        if let accountInfo = getaccoutInfo() {
+            
+            modfiyData(accountinfo: accountInfo)
+            
+            tableView.reloadData()
+            
+            addaccSubview.isHidden = true
+            
+            closeKeyboard()
+        }
         
-        modfiyData(accountinfo: accountInfo!)
-        
-        tableView.reloadData()
-        
-        addaccSubview.isHidden = true
-        
-        closeKeyboard()
     }
     
     @IBAction func clickCanelBtn(_ sender: Any) {
-        self.addaccSubview.isHidden = true
         clearData()
     }
     

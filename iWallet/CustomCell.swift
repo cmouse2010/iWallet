@@ -69,10 +69,14 @@ class CustomCell: UITableViewCell {
         }
     }
     
+    @objc func handleLongpressGesture(sender: UILongPressGestureRecognizer){
+        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: Constant.NOTIFICATION_FIRSTVIEWCONTR_LONG_PRESS), object: self.dataIndex)
+    }
+    
     func initLabs(accountModel:AccountInfoModel,dataindex:Int) -> Void {
         self.titleLab.text = accountModel.title
         self.accountLab.text = accountModel.account
-        self.pwdLab.text = accountModel.pwd
+//        self.pwdLab.text = accountModel.pwd
         self.dataIndex = dataindex
         
         guard let show = accountModel.isshow else {
@@ -92,6 +96,11 @@ class CustomCell: UITableViewCell {
         let swipeLeftGestureR = UISwipeGestureRecognizer(target: self, action: action)
         swipeLeftGestureR.direction = UISwipeGestureRecognizerDirection.right
         self.contentView.addGestureRecognizer(swipeLeftGestureR)
+        
+        let actionLongpress:Selector = #selector(CustomCell.handleLongpressGesture(sender:))
+        let longpressGesture = UITapGestureRecognizer(target: self, action: actionLongpress)
+        longpressGesture.numberOfTapsRequired = 2
+        self.contentView.addGestureRecognizer(longpressGesture)
         
     }
     
